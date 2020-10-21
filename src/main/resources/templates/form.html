@@ -22,7 +22,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" th:href="#">Home
+				<li class="nav-item active"><a class="nav-link" href="#">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
 
@@ -33,62 +33,45 @@
 		</div>
 
 	</nav>
-	
+
 	<div class="container">
-	
-	<h1 th:text="${titulo}" class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
-	
-	<form th:action="@{/form}" method="post" th:object="${cliente}">
-	
-	<table>
-	
-	<tr>
-	<td>Nombre</td>
-	<td><input type="text" placeholder="Nombre Del Cliente" th:field="*{nombre}" class="form-control"/></td>
-	</tr>
-	
-	<tr>
-	<td>Apellido</td>
-	<td><input type="text" placeholder="Apellido Del Cliente" th:field="*{apellido}" class="form-control"/></td>
-	</tr>
-	
-	<tr>
-	<td>Email</td>
-	<td><input type="email" placeholder="Email del cliente" th:field="*{email}" class="form-control"/></td>
-	</tr>
-	
-	<tr>
-	<td><input type="submit" value="Registrar Cliente" class="btn btn-primary"/></td>
-	</tr>
-	
-	</table>
-	<input type="hidden" th:field="*{id}" />
-	</form>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+		<h1 th:text="${titulo}"
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+
+		<form th:action="@{/form}" method="post" th:object="${cliente}">
+
+			<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Nombre</label>
+					<div class="col-sm-6">
+					<input type="text" placeholder="Nombre Del Cliente"
+						th:field="*{nombre}" class="form-control" />
+					</div>
+				
+	       </div>
+	       
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Apellido</label>
+					<div class="col-sm-6"><input type="text" placeholder="Apellido Del Cliente"
+						th:field="*{apellido}" class="form-control" /></div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-6"><input type="email" placeholder="Email del cliente"
+						th:field="*{email}" class="form-control" /></div>
+				 </div>
+
+				<div class="form-group row">
+					<div class="col-sm-6"><input type="submit" value="Registrar Cliente"
+						class="btn btn-primary" /> </div>
+				  </div>
+
+			
+			<input type="hidden" th:field="*{id}" />
+		</form>
+
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
