@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bolsadeideas.springboot.app.entities.Cliente;
 
-@Repository
+@Repository("clienteDaoImpl")
 public class ClienteDaoImpl implements IClienteDao {
 
 	@PersistenceContext
@@ -21,7 +21,7 @@ public class ClienteDaoImpl implements IClienteDao {
 	@Override
 	public List<Cliente> findAll() {
 		// TODO Auto-generated method stub
-		return em.createQuery("form Cliente").getResultList();
+		return em.createQuery("from Cliente").getResultList();
 	}
 
 }

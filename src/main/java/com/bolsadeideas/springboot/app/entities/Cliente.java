@@ -23,7 +23,7 @@ public class Cliente implements Serializable{
 	private Long id;
 	
 	private String nombre;
-	private String apllido;
+	private String apellido;
 	private String email;
 	
 	@Column(name="create_at")
@@ -46,12 +46,12 @@ public class Cliente implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public String getApllido() {
-		return apllido;
+	public String getApellido() {
+		return apellido;
 	}
 
-	public void setApllido(String apllido) {
-		this.apllido = apllido;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public String getEmail() {
