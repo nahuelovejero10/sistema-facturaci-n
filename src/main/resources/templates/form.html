@@ -1,65 +1,92 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 	crossorigin="anonymous">
 <title th:text="${titulo}"></title>
+
 </head>
-
-
 <body>
+
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">Spring boot</a>
-		
+
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		
+
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
+				<li class="nav-item active"><a class="nav-link" th:href="#">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-				
+
 				<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Clientes</a>
 				</li>
-				
+
 			</ul>
 		</div>
-		
-	</nav>
-	<div class="container">
-		<h1
-			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
-			th:text="${titulo}"></h1>
 
-	<a th:href="@{/form}">Registrar Cliente</a>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Nombre</th>
-					<th>Apellido</th>
-					<th>Correo</th>
-					<th>Fecha</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="cliente: ${clientes}">
-					<td th:text="${cliente.id}"></td>
-					<td th:text="${cliente.nombre}"></td>
-					<td th:text="${cliente.apellido}"></td>
-					<td th:text="${cliente.email}"></td>
-					<td th:text="${cliente.createAt}"></td>
-				</tr>
-			</tbody>
-		</table>
+	</nav>
+	
+	<div class="container">
+	
+	<h1 th:text="${titulo}" class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+	
+	<form th:action="@{/form}" method="post" th:object="${cliente}">
+	
+	<table>
+	
+	<tr>
+	<td>Nombre</td>
+	<td><input type="text" placeholder="Nombre Del Cliente" th:field="*{nombre}" class="form-control"/></td>
+	</tr>
+	
+	<tr>
+	<td>Apellido</td>
+	<td><input type="text" placeholder="Apellido Del Cliente" th:field="*{apellido}" class="form-control"/></td>
+	</tr>
+	
+	<tr>
+	<td>Email</td>
+	<td><input type="email" placeholder="Email del cliente" th:field="*{email}" class="form-control"/></td>
+	</tr>
+	
+	<tr>
+	<td><input type="submit" value="Registrar Cliente" class="btn btn-primary"/></td>
+	</tr>
+	
+	</table>
+	<input type="hidden" th:field="*{id}" />
+	</form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
