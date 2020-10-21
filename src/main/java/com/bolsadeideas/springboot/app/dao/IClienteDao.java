@@ -7,4 +7,6 @@ import com.bolsadeideas.springboot.app.entities.Cliente;
 public interface IClienteDao {
 
 	public List<Cliente> findAll();
+	
+	public void save(Cliente cliente);
 }
