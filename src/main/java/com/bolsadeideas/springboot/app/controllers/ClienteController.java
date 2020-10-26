@@ -37,36 +37,45 @@ public class ClienteController {
 		Cliente cliente = new Cliente();
 		model.addAttribute("cliente", cliente);
 		model.addAttribute("titulo", "Formulario de cliente");
-		return"form";
+		return "form";
 	}
-	
-	
+
 	@PostMapping("/form")
 	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, SessionStatus status) {
-		
-		if(result.hasErrors()) {
-		model.addAttribute("titulo", "Formulario de cliente");
-		return "form";	
+
+		if (result.hasErrors()) {
+			model.addAttribute("titulo", "Formulario de cliente");
+			return "form";
 		}
 		clienteDao.save(cliente);
 		status.setComplete();
 		return "redirect:listar";
 	}
-	
-	
+
 	@GetMapping("/form/{id}")
 	public String editarCliente(@PathVariable(value = "id") Long id, Model model) {
-	
+
 		Cliente cliente = null;
-		
-		if(id > 0) {
+
+		if (id > 0) {
 			cliente = clienteDao.findOne(id);
-		}else {
+		} else {
 			return "redirect:/listar";
 		}
 		model.addAttribute("cliente", cliente);
 		model.addAttribute("titulo", "Editar Cliente");
-		
+
 		return "form";
 	}
+
+	@GetMapping("/eliminar/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id, Model model) {
+
+		if (id > 0) {
+
+			clienteDao.delete(id);
+		}
+		return "redirect:/listar";
+	}
+
 }
