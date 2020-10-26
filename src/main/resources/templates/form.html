@@ -42,33 +42,53 @@
 		<form th:action="@{/form}" method="post" th:object="${cliente}">
 
 			<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Nombre</label>
-					<div class="col-sm-6">
+				<label class="col-sm-2 col-form-label">Nombre</label>
+				<div class="col-sm-6">
 					<input type="text" placeholder="Nombre Del Cliente"
-						th:field="*{nombre}" class="form-control" />
-					</div>
-				
-	       </div>
-	       
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Apellido</label>
-					<div class="col-sm-6"><input type="text" placeholder="Apellido Del Cliente"
-						th:field="*{apellido}" class="form-control" /></div>
+						th:field="*{nombre}" class="form-control" th:errorclass="'form-control alert-danger'"/> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 				</div>
 
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Email</label>
-					<div class="col-sm-6"><input type="email" placeholder="Email del cliente"
-						th:field="*{email}" class="form-control" /></div>
-				 </div>
+			</div>
 
-				<div class="form-group row">
-					<div class="col-sm-6"><input type="submit" value="Registrar Cliente"
-						class="btn btn-primary" /> </div>
-				  </div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Apellido</label>
+				<div class="col-sm-6">
+					<input type="text" placeholder="Apellido Del Cliente"
+						th:field="*{apellido}" class="form-control" th:errorclass="'form-control alert-danger'"/> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+				</div>
+			</div>
 
-			
-			<input type="hidden" th:field="*{id}" />
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Email</label>
+				<div class="col-sm-6">
+					<input type="email" placeholder="Email del cliente"
+						th:field="*{email}" class="form-control" th:errorclass="'form-control alert-danger'"/> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Fecha</label>
+				<div class="col-sm-6">
+					<input type="text" placeholder="Fecha de registro"
+						th:field="*{createAt}" class="form-control" th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<input type="submit" value="Registrar Cliente"
+						class="btn btn-primary" />
+				</div>
+			</div>
+
 		</form>
 
 	</div>
