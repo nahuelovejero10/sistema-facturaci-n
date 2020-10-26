@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
-import com.bolsadeideas.springboot.app.dao.IClienteDao;
 import com.bolsadeideas.springboot.app.entities.Cliente;
+import com.bolsadeideas.springboot.app.services.IClienteService;
 
 @Controller
 @SessionAttributes("cliente")
@@ -22,13 +21,13 @@ public class ClienteController {
 
 	@Autowired
 	@Qualifier("clienteDaoImpl")
-	private IClienteDao clienteDao;
+	private IClienteService clienteService;
 
 	@GetMapping("/listar")
 	public String listar(Model model) {
 
 		model.addAttribute("titulo", "Listado de clientes");
-		model.addAttribute("clientes", clienteDao.findAll());
+		model.addAttribute("clientes", clienteService.findAll());
 		return "listar";
 	}
 
@@ -47,7 +46,7 @@ public class ClienteController {
 			model.addAttribute("titulo", "Formulario de cliente");
 			return "form";
 		}
-		clienteDao.save(cliente);
+		clienteService.save(cliente);
 		status.setComplete();
 		return "redirect:listar";
 	}
@@ -58,7 +57,7 @@ public class ClienteController {
 		Cliente cliente = null;
 
 		if (id > 0) {
-			cliente = clienteDao.findOne(id);
+			cliente = clienteService.findOne(id);
 		} else {
 			return "redirect:/listar";
 		}
@@ -73,7 +72,7 @@ public class ClienteController {
 
 		if (id > 0) {
 
-			clienteDao.delete(id);
+			clienteService.delete(id);
 		}
 		return "redirect:/listar";
 	}

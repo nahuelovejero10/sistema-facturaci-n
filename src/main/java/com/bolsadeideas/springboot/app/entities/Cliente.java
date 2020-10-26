@@ -19,37 +19,37 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="clientes")
-public class Cliente implements Serializable{
+@Table(name = "clientes")
+public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotEmpty
 	private String nombre;
-	
+
 	@NotEmpty
 	private String apellido;
-	
+
 	@NotEmpty
 	@Email
 	private String email;
-	
+
 	@NotNull
-	@Column(name="create_at")
+	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyy-MM-dd")
 	private Date createAt;
 
-	/* En caso de querer que la fecha sea la del momento de crear al cliente, descomentar y comentar el campo del formulario
-	@PrePersist
-	public void prePersist() {
-		this.createAt = new Date();
-	}
-	*/
+	/*
+	 * En caso de querer que la fecha sea la del momento de crear al cliente,
+	 * descomentar y comentar el campo del formulario
+	 * 
+	 * @PrePersist public void prePersist() { this.createAt = new Date(); }
+	 */
 	public Long getId() {
 		return id;
 	}
@@ -93,7 +93,5 @@ public class Cliente implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 
 }

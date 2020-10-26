@@ -17,7 +17,6 @@ public class ClienteDaoImpl implements IClienteDao {
 	private EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	@Transactional(readOnly = true)
 	@Override
 	public List<Cliente> findAll() {
 		// TODO Auto-generated method stub
@@ -37,14 +36,12 @@ public class ClienteDaoImpl implements IClienteDao {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public Cliente findOne(Long id) {
 
 		return em.find(Cliente.class, id);
 	}
 
 	@Override
-	@Transactional
 	public void delete(Long id) {
 
 		em.remove(findOne(id));
