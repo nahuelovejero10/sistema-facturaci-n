@@ -20,7 +20,6 @@ import com.bolsadeideas.springboot.app.services.IClienteService;
 public class ClienteController {
 
 	@Autowired
-	@Qualifier("clienteDaoImpl")
 	private IClienteService clienteService;
 
 	@GetMapping("/listar")
