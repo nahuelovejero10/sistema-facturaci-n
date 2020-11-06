@@ -1,49 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-	crossorigin="anonymous">
-<title th:text="${titulo}"></title>
-</head>
-
-
+<head th:replace="layout/layout :: head"></head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Spring boot</a>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+	<div class="card bg-light">
+	<div class="card-header" th:text="${titulo}"></div>
+	<div class="card-body">
+		
 
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-
-				<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Clientes</a>
-				</li>
-
-			</ul>
-		</div>
-
-	</nav>
-	<div class="container">
-		<h1
-			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
-			th:text="${titulo}"></h1>
-
-		<p>
-			<a class="btn btn-success btn-xs" th:href="@{/form}">Registrar
+		<h4 class="card-tittle">
+			<a class="btn btn-primary btn-xs" th:href="@{/form}">Registrar
 				Cliente</a>
-		</p>
-		<table class="table table-striped">
-			<thead>
+		</h4>
+		<table class="table table-striped table-bordered">
+			<thead class="thead-inverse bg-dark text-white">
 				<tr>
 					<th>Id</th>
 					<th>Nombre</th>
@@ -65,13 +36,17 @@
 						th:href="@{/form/} + ${cliente.id}" th:text="'Editar'"></a></td>
 					<td><a class="btn btn-danger btn-xs"
 						th:href="@{/eliminar/} + ${cliente.id}" th:text="'Eliminar'"
-						onclick="return confirm('¿Está seguro que desea eliminar el cliente?');"></a>
+						onclick="return confirm('&iquest;Est&aacute; seguro que desea eliminar el cliente?');"></a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+		<nav th:replace="paginator-nav :: paginator"></nav>
+		</div>
+		</div>
 	</div>
 
+	<footer th:replace="layout/layout :: footer"></footer>
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
